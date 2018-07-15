@@ -49,4 +49,26 @@ class BoardTest < Minitest::Test
 
     assert_equal expected, board.board
   end
+
+  def test_it_stacks_pieces
+    board = Board.new
+    piece = Piece.new('X')
+    piece1 = Piece.new('O')
+    expected = [{ 'A' => '-', 'B' => '-', 'C' => '-', 'D' => '-', 'E' => '-',
+                  'F' => '-', 'G' => '-' },
+                { 'A' => '-', 'B' => '-', 'C' => '-', 'D' => '-', 'E' => '-',
+                  'F' => '-', 'G' => '-' },
+                { 'A' => '-', 'B' => '-', 'C' => '-', 'D' => '-', 'E' => '-',
+                  'F' => '-', 'G' => '-' },
+                { 'A' => '-', 'B' => '-', 'C' => '-', 'D' => '-', 'E' => '-',
+                  'F' => '-', 'G' => '-' },
+                { 'A' => '-', 'B' => '-', 'C' => '-', 'D' => '-', 'E' => '-',
+                  'F' => '-', 'G' => piece1 },
+                { 'A' => '-', 'B' => '-', 'C' => '-', 'D' => '-', 'E' => '-',
+                  'F' => '-', 'G' => piece }]
+    board.move(piece, 'G')
+    board.move(piece1, 'G')
+    require "pry"; binding.pry
+    assert_equal expected, board.board
+  end
 end
