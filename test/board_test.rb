@@ -68,7 +68,7 @@ class BoardTest < Minitest::Test
                   'F' => '-', 'G' => piece }]
     board.move(piece, 'G')
     board.move(piece1, 'G')
-    require "pry"; binding.pry
+
     assert_equal expected, board.board
   end
 end
