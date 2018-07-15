@@ -20,12 +20,11 @@ class Board
                 'F' => '-', 'G' => '-' }]
   end
 
-  def move(piece, column, row=5)
+  def move(piece, column, row = 5)
     if @board[row][column] == '-'
       @board[row][column] = piece
     else
       move(piece, column, (row - 1))
     end
   end
-
 end
