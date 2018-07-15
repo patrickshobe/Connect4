@@ -6,14 +6,14 @@ require './lib/piece'
 
 class PieceTest < Minitest::Test
   def test_it_exists
-    piece = Piece.new("X")
+    piece = Piece.new('X')
 
     assert_instance_of Piece, piece
   end
 
-  def tets_it_holds_a_value
-    piece = Piece.new("X")
+  def test_it_holds_a_value
+    piece = Piece.new('X')
 
-    assert_equal "X", piece.value
+    assert_equal 'X', piece.value
   end
 end
