@@ -6,23 +6,18 @@ require './lib/piece'
 class Board
   attr_accessor :board
   def initialize
-    @board = [{ A:  '-', B:  '-', C:  '-', D:  '-', E:  '-',
-                F:  '-', G:  '-' },
-              { A:  '-', B:  '-', C:  '-', D:  '-', E:  '-',
-                F:  '-', G:  '-' },
-              { A:  '-', B:  '-', C:  '-', D:  '-', E:  '-',
-                F:  '-', G:  '-' },
-              { A:  '-', B:  '-', C:  '-', D:  '-', E:  '-',
-                F:  '-', G:  '-' },
-              { A:  '-', B:  '-', C:  '-', D:  '-', E:  '-',
-                F:  '-', G:  '-' },
-              { A:  '-', B:  '-', C:  '-', D:  '-', E:  '-',
-                F:  '-', G:  '-' }]
+    @board = [['-', '-', '-', '-', '-','-', '-'],
+              ['-', '-', '-', '-', '-','-', '-'],
+              ['-', '-', '-', '-', '-','-', '-'],
+              ['-', '-', '-', '-', '-','-', '-'],
+              ['-', '-', '-', '-', '-','-', '-'],
+              ['-', '-', '-', '-','-','-', '-']]
   end
 
   def move(piece, column, row = 5)
-    if @board[row][column] == '-'
-      @board[row][column] = piece.value
+    column_key = {A: 0, B: 1, C: 2, D: 3, E: 4, F: 5, G: 6}
+    if @board[row][column_key[column]] == '-'
+      @board[row][column_key[column]] = piece.value
     else
       move(piece, column, (row - 1))
     end
@@ -33,10 +28,10 @@ class Board
 
     # Lateral Check
     @board.each do |row|
-      if row.values.join.include?("XXXX")
+      if row.join.include?("XXXX")
         winner = 'Computer'
         break
-      elsif row.values.join.include?("OOOO")
+      elsif row.join.include?("OOOO")
         winner = 'Player'
         break
       end
@@ -44,9 +39,7 @@ class Board
 
     # Vertical Check
 
-    columns = %I[A B C D E F G]
-
-    columns.each do |column|
+    (0..6).each do |column|
       value_array = []
       (0..5).to_a.each do |row|
         value_array << @board[row][column]
@@ -60,6 +53,9 @@ class Board
         break
       end
     end
+
+    # Horizontal_positive_check
+    # starting_points[@board[5][columns[4]], ]
     winner
   end
 end

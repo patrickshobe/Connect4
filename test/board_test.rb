@@ -14,18 +14,12 @@ class BoardTest < Minitest::Test
 
   def test_it_starts_with_an_empty_board
     board = Board.new
-    expected = [{ A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' }]
+    expected = [['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-','-','-', '-']]
 
     assert_equal expected, board.board
   end
@@ -33,18 +27,12 @@ class BoardTest < Minitest::Test
   def test_it_holds_a_piece
     board = Board.new
     piece = Piece.new('X')
-    expected = [{ A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: piece.value }]
+    expected = [['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-','-','-', piece.value]]
     board.move(piece, :G)
 
     assert_equal expected, board.board
@@ -54,18 +42,12 @@ class BoardTest < Minitest::Test
     board = Board.new
     piece = Piece.new('X')
     piece1 = Piece.new('O')
-    expected = [{ A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: '-' },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: piece1.value },
-                { A: '-', B: '-', C: '-', D: '-', E: '-',
-                  F: '-', G: piece.value }]
+    expected = [['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', '-'],
+                ['-', '-', '-', '-', '-','-', piece1.value],
+                ['-', '-', '-', '-','-','-', piece.value]]
     board.move(piece, :G)
     board.move(piece1, :G)
 
@@ -91,7 +73,7 @@ class BoardTest < Minitest::Test
     piece1 = Piece.new(:X)
     piece2 = Piece.new(:X)
     piece3 = Piece.new(:X)
-    board.move(piece, :G)
+    board.move(piece,  :G)
     board.move(piece1, :G)
     board.move(piece2, :G)
     board.move(piece3, :G)
