@@ -31,11 +31,4 @@ class PlayerTest < Minitest::Test
 
     assert_equal 'Patrick', player.name
   end
-
-  def test_it_chooses_a_piece
-    player = Player.new
-    player.piece = :X
-
-    assert_equal :X, player.piece
-  end
 end
