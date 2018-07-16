@@ -64,7 +64,7 @@ class BoardTest < Minitest::Test
     board.move(piece1, :B)
     board.move(piece2, :C)
     board.move(piece3, :D)
-    assert_equal 'Computer', board.win_check
+    assert_equal 'Computer', board.horizontal_win_check
   end
 
   def test_it_finds_vertical_wins
@@ -77,7 +77,7 @@ class BoardTest < Minitest::Test
     board.move(piece1, :G)
     board.move(piece2, :G)
     board.move(piece3, :G)
-    assert_equal 'Computer', board.win_check
+    assert_equal 'Computer', board.vertical_win_check
   end
 
   def test_it_finds_right_angle_wins
