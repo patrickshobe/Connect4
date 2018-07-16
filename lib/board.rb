@@ -74,12 +74,36 @@ class Board
     winner
   end
 
+  def left_check
+    starting_points = [[5, 3], [5, 4], [5, 5], [5, 6], [4, 6], [3, 6]]
+    winner = nil
+    starting_points.each do |point|
+      winner = left_angle_join(point)
+
+      if winner != nil
+        break
+      end
+    end
+    winner
+  end
+
   def right_angle_join(starting_point=[5, 3])
     row = starting_point[0]
     column = starting_point[1]
     if @board[row][column] != nil
       @array << @board[row][column]
       right_angle_join([(row -= 1), (column += 1)])
+    else
+      return angle_checker(@array)
+    end
+  end
+
+  def left_angle_join(starting_point = [5, 3])
+    row = starting_point[0]
+    column = starting_point[1]
+    if @board[row][column] != nil
+      @array << @board[row][column]
+      left_angle_join([(row -= 1), (column -= 1)])
     else
       return angle_checker(@array)
     end
