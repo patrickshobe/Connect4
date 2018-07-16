@@ -12,6 +12,7 @@ class Board
               ['-', '-', '-', '-', '-','-', '-'],
               ['-', '-', '-', '-', '-','-', '-'],
               ['-', '-', '-', '-','-','-', '-']]
+    @array = []
   end
 
   def move(piece, column, row = 5)
@@ -55,7 +56,42 @@ class Board
     end
 
     # Horizontal_positive_check
-    # starting_points[@board[5][columns[4]], ]
+
+
     winner
   end
+
+  def right_check
+    starting_points = [[5, 3], [5, 2], [5, 1], [5, 0], [4, 0], [3, 0]]
+    winner = nil
+    starting_points.each do |point|
+      winner = right_angle_join(point)
+
+      if winner != nil
+        break
+      end
+    end
+    winner
+  end
+
+  def right_angle_join(starting_point=[5, 3])
+    row = starting_point[0]
+    column = starting_point[1]
+    if @board[row][column] != nil
+      @array << @board[row][column]
+      right_angle_join([(row -= 1), (column += 1)])
+    else
+      return angle_checker(@array)
+    end
+  end
+
+  def angle_checker(array)
+    if array.join.include?('XXXX')
+      winner = "Computer"
+    elsif array.join.include?('OOOO')
+      winner = "Player"
+    end
+    winner
+  end
+
 end

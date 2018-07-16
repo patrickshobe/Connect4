@@ -80,6 +80,41 @@ class BoardTest < Minitest::Test
     assert_equal 'Computer', board.win_check
   end
 
+  def test_it_finds_angle_wins
+    board = Board.new
+    piece = Piece.new(:X)
+    piece1 = Piece.new(:X)
+    piece2 = Piece.new(:X)
+    piece3 = Piece.new(:X)
+
+    piece4 = Piece.new(:X)
+    piece5 = Piece.new(:X)
+    piece6 = Piece.new(:X)
+
+    piece7 = Piece.new(:X)
+    piece8 = Piece.new(:X)
+
+    piece9 = Piece.new(:X)
+
+
+    board.move(piece,  :G)
+    board.move(piece1, :G)
+    board.move(piece2, :G)
+    board.move(piece3, :G)
+
+    board.move(piece4, :F)
+    board.move(piece5, :F)
+    board.move(piece6, :F)
+
+    board.move(piece7, :E)
+    board.move(piece8, :E)
+
+    board.move(piece9, :D)
+
+
+    assert_equal 'Computer', board.right_check
+  end
+
 
 
 end
