@@ -2,7 +2,6 @@
 
 require 'minitest/autorun'
 require 'minitest/emoji'
-require './lib/piece'
 require './lib/board'
 require './lib/player'
 require './lib/Render'
@@ -35,7 +34,7 @@ class RenderTest < Minitest::Test
   def test_it_renders_pieces
     board = Board.new
     render = Render.new(board.game_board)
-    board.move(Piece.new(:X), :G)
+    board.move(:X, :G)
 
     expected =  "_____________________________\n"\
                 "| A | B | C | D | E | F | G |\n"\

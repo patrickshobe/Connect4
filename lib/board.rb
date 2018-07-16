@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require './lib/piece'
-
 # ./lib/board
 class Board
   attr_accessor :game_board
@@ -19,7 +17,7 @@ class Board
     column_key = { A: 0, B: 1, C: 2, D: 3, E: 4, F: 5, G: 6 }
     column_index = column_key[column_letter]
     if @game_board[row_index][column_index] == '-'
-      @game_board[row_index][column_index] = piece.value
+      @game_board[row_index][column_index] = piece
     else
       move(piece, column_letter, (row_index - 1))
     end

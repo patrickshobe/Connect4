@@ -2,7 +2,6 @@
 
 require 'minitest/autorun'
 require 'minitest/emoji'
-require './lib/piece'
 require './lib/board'
 
 class BoardTest < Minitest::Test
@@ -26,30 +25,27 @@ class BoardTest < Minitest::Test
 
   def test_it_holds_a_piece
     board = Board.new
-    piece = Piece.new('X')
     expected = [['-', '-', '-', '-', '-','-', '-'],
                 ['-', '-', '-', '-', '-','-', '-'],
                 ['-', '-', '-', '-', '-','-', '-'],
                 ['-', '-', '-', '-', '-','-', '-'],
                 ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-','-','-', piece.value]]
-    board.move(piece, :G)
+                ['-', '-', '-', '-','-','-', :X]]
+    board.move(:X, :G)
 
     assert_equal expected, board.game_board
   end
 
   def test_it_stacks_pieces
     board = Board.new
-    piece = Piece.new('X')
-    piece1 = Piece.new('O')
     expected = [['-', '-', '-', '-', '-','-', '-'],
                 ['-', '-', '-', '-', '-','-', '-'],
                 ['-', '-', '-', '-', '-','-', '-'],
                 ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', piece1.value],
-                ['-', '-', '-', '-','-','-', piece.value]]
-    board.move(piece, :G)
-    board.move(piece1, :G)
+                ['-', '-', '-', '-', '-','-', :X],
+                ['-', '-', '-', '-','-','-', :X]]
+    board.move(:X, :G)
+    board.move(:X, :G)
 
     assert_equal expected, board.game_board
   end

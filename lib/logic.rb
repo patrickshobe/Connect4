@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require './lib/piece'
 require './lib/board'
 
 # ./lib/logic

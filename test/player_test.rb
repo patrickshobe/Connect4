@@ -2,7 +2,6 @@
 
 require 'minitest/autorun'
 require 'minitest/emoji'
-require './lib/piece'
 require './lib/board'
 require './lib/player'
 
