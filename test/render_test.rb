@@ -11,14 +11,14 @@ class RenderTest < Minitest::Test
 
   def test_it_exists
     board = Board.new
-    render = Render.new(board.board)
+    render = Render.new(board.game_board)
 
     assert_instance_of Render, render
   end
 
   def test_it_displays_empty
     board = Board.new
-    render = Render.new(board.board)
+    render = Render.new(board.game_board)
     expected =  "_____________________________\n"\
                 "| A | B | C | D | E | F | G |\n"\
                 "| - | - | - | - | - | - | - |\n"\
@@ -34,7 +34,7 @@ class RenderTest < Minitest::Test
 
   def test_it_renders_pieces
     board = Board.new
-    render = Render.new(board.board)
+    render = Render.new(board.game_board)
     board.move(Piece.new(:X), :G)
 
     expected =  "_____________________________\n"\
