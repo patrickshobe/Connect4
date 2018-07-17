@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require './lib/board'
-require './lib/piece'
+
 
 # ./lib/render
 class Render

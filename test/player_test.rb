@@ -2,7 +2,6 @@
 
 require 'minitest/autorun'
 require 'minitest/emoji'
-require './lib/piece'
 require './lib/board'
 require './lib/player'
 
@@ -16,7 +15,7 @@ class PlayerTest < Minitest::Test
   def test_it_is_anonymous_to_begin
     player = Player.new
 
-    assert_equal '', player.name
+    assert_equal 'Player 1', player.name
   end
 
   def test_it_has_a_default_piece
@@ -25,7 +24,7 @@ class PlayerTest < Minitest::Test
     assert_equal :O, player.piece
   end
 
-  def test_it_has_a_name
+  def test_it_updates_a_name
     player = Player.new
     player.name = 'Patrick'
 
