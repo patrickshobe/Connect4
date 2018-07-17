@@ -13,40 +13,31 @@ class BoardTest < Minitest::Test
 
   def test_it_starts_with_an_empty_board
     board = Board.new
-    expected = [['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-','-','-', '-']]
 
-    assert_equal expected, board.game_board
+    expected = [['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-']]
+    actual = board.game_board
+
+    assert_equal expected, actual
   end
 
-  def test_it_holds_a_piece
+  def test_it_holds_and_stacks_pieces
     board = Board.new
-    expected = [['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-','-','-', :X]]
-    board.move(:X, :G)
+    board.place_piece(:X, :G)
+    board.place_piece(:X, :G)
 
-    assert_equal expected, board.game_board
-  end
+    expected = [['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', '-'],
+                ['-', '-', '-', '-', '-', '-', :X],
+                ['-', '-', '-', '-', '-', '-', :X]]
+    actual = board.game_board
 
-  def test_it_stacks_pieces
-    board = Board.new
-    expected = [['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', '-'],
-                ['-', '-', '-', '-', '-','-', :X],
-                ['-', '-', '-', '-','-','-', :X]]
-    board.move(:X, :G)
-    board.move(:X, :G)
-
-    assert_equal expected, board.game_board
+    assert_equal expected, actual
   end
 end

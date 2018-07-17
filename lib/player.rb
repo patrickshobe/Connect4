@@ -5,7 +5,7 @@ class Player
   attr_accessor :name,
                 :piece
   def initialize
-    @name = ''
+    @name = 'Player 1'
     @piece = :O
   end
 end

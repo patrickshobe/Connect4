@@ -23,12 +23,4 @@ class ComputerTest < Minitest::Test
 
     assert_equal 'Blinky', computer.name
   end
-
-  def test_it_chooses_the_opposite_piece
-    computer = Computer.new
-    player = Player.new
-    player.piece = :X
-
-    assert_equal :X, computer.piece
-  end
 end

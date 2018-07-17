@@ -18,6 +18,7 @@ class RenderTest < Minitest::Test
   def test_it_displays_empty
     board = Board.new
     render = Render.new(board.game_board)
+
     expected =  "_____________________________\n"\
                 "| A | B | C | D | E | F | G |\n"\
                 "| - | - | - | - | - | - | - |\n"\
@@ -26,15 +27,16 @@ class RenderTest < Minitest::Test
                 "| - | - | - | - | - | - | - |\n"\
                 "| - | - | - | - | - | - | - |\n"\
                 "| - | - | - | - | - | - | - |\n"\
-                "|___________________________|"
+                '|___________________________|'
+    actual = render.display
 
-    assert_equal expected, render.display
+    assert_equal expected, actual
   end
 
   def test_it_renders_pieces
     board = Board.new
     render = Render.new(board.game_board)
-    board.move(:X, :G)
+    board.place_piece(:X, :G)
 
     expected =  "_____________________________\n"\
                 "| A | B | C | D | E | F | G |\n"\
@@ -44,8 +46,9 @@ class RenderTest < Minitest::Test
                 "| - | - | - | - | - | - | - |\n"\
                 "| - | - | - | - | - | - | - |\n"\
                 "| - | - | - | - | - | - | X |\n"\
-                "|___________________________|"
+                '|___________________________|'
+    actual = render.display
 
-    assert_equal expected, render.display
+    assert_equal expected, actual
   end
 end
