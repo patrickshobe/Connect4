@@ -62,11 +62,11 @@ class LogicTest < Minitest::Test
     board = Board.new
 
     board.place_piece(:X, :B)
-    board.place_piece(:X, :B)
+    board.place_piece(:O, :B)
     board.place_piece(:X, :B)
     board.place_piece(:X, :B)
 
-    board.place_piece(:X, :C)
+    board.place_piece(:O, :C)
     board.place_piece(:X, :C)
     board.place_piece(:X, :C)
 
@@ -77,6 +77,65 @@ class LogicTest < Minitest::Test
     logic = Logic.new(board)
 
     expected = 'Computer'
+    actual = logic.check_for_all_win_conditions
+
+    assert_equal expected, actual
+  end
+
+  def test_it_finds_a_draw
+    board = Board.new
+
+    board.place_piece(:X, :A)
+    board.place_piece(:O, :A)
+    board.place_piece(:X, :A)
+    board.place_piece(:O, :A)
+    board.place_piece(:X, :A)
+    board.place_piece(:O, :A)
+
+    board.place_piece(:O, :B)
+    board.place_piece(:X, :B)
+    board.place_piece(:O, :B)
+    board.place_piece(:X, :B)
+    board.place_piece(:O, :B)
+    board.place_piece(:X, :B)
+
+    board.place_piece(:X, :C)
+    board.place_piece(:O, :C)
+    board.place_piece(:X, :C)
+    board.place_piece(:O, :C)
+    board.place_piece(:X, :C)
+    board.place_piece(:O, :C)
+
+    board.place_piece(:O, :D)
+    board.place_piece(:X, :D)
+    board.place_piece(:O, :D)
+    board.place_piece(:X, :D)
+    board.place_piece(:O, :D)
+    board.place_piece(:X, :D)
+
+    board.place_piece(:X, :E)
+    board.place_piece(:O, :E)
+    board.place_piece(:X, :E)
+    board.place_piece(:O, :E)
+    board.place_piece(:X, :E)
+    board.place_piece(:O, :E)
+
+    board.place_piece(:O, :F)
+    board.place_piece(:X, :F)
+    board.place_piece(:O, :F)
+    board.place_piece(:X, :F)
+    board.place_piece(:O, :F)
+    board.place_piece(:X, :F)
+
+    board.place_piece(:X, :G)
+    board.place_piece(:O, :G)
+    board.place_piece(:X, :G)
+    board.place_piece(:O, :G)
+    board.place_piece(:X, :G)
+    board.place_piece(:O, :G)
+    logic = Logic.new(board)
+
+    expected = 'DRAW'
     actual = logic.check_for_all_win_conditions
 
     assert_equal expected, actual
