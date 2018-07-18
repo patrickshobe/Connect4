@@ -41,7 +41,7 @@ class BoardTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_it_returns_nil_when_full
+  def test_it_returns_full_when_full
     board = Board.new
     board.place_piece(:X, :G)
     board.place_piece(:X, :G)
@@ -51,7 +51,7 @@ class BoardTest < Minitest::Test
     board.place_piece(:X, :G)
     board.place_piece(:X, :G)
 
-    expected = "Row Full"
+    expected = :ROW_FULL
 
     actual = board.place_piece(:O, :G)
 

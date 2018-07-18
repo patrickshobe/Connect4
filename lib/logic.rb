@@ -15,6 +15,7 @@ class Logic
     check_for_vertical_wins
     check_for_right_diagonal_wins
     check_for_left_diagonal_wins
+    check_for_draw
     @winner
   end
 
@@ -70,5 +71,13 @@ class Logic
   def player_or_computer_win_validator(value_array)
     @winner = 'Computer' if value_array.join.include?('XXXX')
     @winner = 'Player' if value_array.join.include?('OOOO')
+  end
+
+  def check_for_draw
+    total = 0
+    @game_board.each do |row|
+      total += row.count { |item| item != '-' }
+    end
+    @winner = 'DRAW' if total >= 42
   end
 end
