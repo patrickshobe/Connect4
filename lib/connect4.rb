@@ -28,7 +28,7 @@ while logic.winner.nil?
   input = gets.chomp
   action = player_input_validator(input, board, render)
   if action == :ROW_FULL
-    puts "INVALID MOVE PLEASE TRY AGAIN"
+    puts "\nINVALID MOVE PLEASE TRY AGAIN"
     next
   end
   puts render.display
