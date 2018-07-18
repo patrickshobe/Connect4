@@ -8,4 +8,8 @@ class Computer
     @name = 'Blinky'
     @piece = :X
   end
+
+  def generate_move
+    %I[A B C D E F G].sample
+  end
 end

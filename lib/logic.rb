@@ -4,6 +4,7 @@ require './lib/board'
 
 # ./lib/logic
 class Logic
+  attr_reader :winner
   def initialize(board_object)
     @game_board = board_object.game_board
     @winner = nil
@@ -49,7 +50,8 @@ class Logic
   end
 
   def right_diagonal_array_creator(row, column, diagonal_array = [])
-    unless @game_board[row][column].nil?
+    diagonal_ending_points = [[1, 7], [0, 7], [-1, 7], [-1, 6], [-1, 5], [-1, 4]]
+    unless diagonal_ending_points.include?([row, column])
       diagonal_array << @game_board[row][column]
       right_diagonal_array_creator((row - 1), (column + 1), diagonal_array)
     end
@@ -57,7 +59,8 @@ class Logic
   end
 
   def left_diagonal_array_creator(row, column, diagonal_array = [])
-    unless @game_board[row][column].nil?
+    diagonal_ending_points = [[1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1], [-1, 2]]
+    unless diagonal_ending_points.include?([row, column])
       diagonal_array << @game_board[row][column]
       left_diagonal_array_creator((row - 1), (column - 1), diagonal_array)
     end

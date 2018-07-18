@@ -6,7 +6,7 @@ require './lib/board'
 # ./lib/render
 class Render
   def initialize(board)
-    @board = board
+    @board = board.game_board
   end
 
   def display
