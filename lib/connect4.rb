@@ -25,19 +25,20 @@ puts "Welcome to Connect 4"
 while logic.winner.nil?
   puts render.display
   print "Enter a Move => "
-  input = gets.chomp
+  input = gets.chomp.upcase
   action = player_input_validator(input, board, render)
   if action == :ROW_FULL
     puts "\nINVALID MOVE PLEASE TRY AGAIN"
     next
+  elsif action == "Invalid Input"
+    puts "\nINVALID INPUT PLEASE TRY AGAIN"
   end
   puts render.display
   logic.check_for_all_win_conditions
-  sleep 1
-  system 'clear'
+  sleep 0.5
   board.place_piece(:X, computer.generate_move)
   logic.check_for_all_win_conditions
-  sleep 1
+  sleep 0.5
   system 'clear'
 end
 
